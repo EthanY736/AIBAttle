@@ -1,9 +1,11 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class EndPointCollision : MonoBehaviour
 {
     public GameObject spawnPoint;
     public GameObject endPoint;
+    public string nextSceneName; // Name of the next scene to load
 
     private void Start()
     {
@@ -24,11 +26,19 @@ public class EndPointCollision : MonoBehaviour
         // Assuming the player has a tag "Player"
         if (other.gameObject.CompareTag("Player"))
         {
-                Debug.Log("Completed");
+            Debug.Log("Completed");
+            LoadNextScene();
         }
         else
         {
             Debug.Log("Broken");
         }
     }
+
+    private void LoadNextScene()
+    {
+        // Load the next scene
+        SceneManager.LoadScene(nextSceneName);
+    }
 }
+

@@ -431,6 +431,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnPoint: {fileID: 23797122}
   endPoint: {fileID: 52109841}
+  nextSceneName: Level 2
 --- !u!1 &95125820
 GameObject:
   m_ObjectHideFlags: 0

@@ -26,6 +26,8 @@ public class InteractableObject : MonoBehaviour
 
             // Log the interaction
             Debug.Log("Painting Found!");
+            FadeTextController.instance.TriggerText();
+            PaintingTracker.instance.AddPainting();
         }
     }
 }

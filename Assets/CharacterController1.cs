@@ -4,7 +4,7 @@ public class CharacterController1 : MonoBehaviour
 {
     public float moveSpeed = 5f;
     public float mouseSensitivity = 100f;
-    
+
     private float xRotation = 0f;
 
     void Start()

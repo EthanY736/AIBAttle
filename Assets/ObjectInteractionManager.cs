@@ -1,12 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class ObjectInteractionManager : MonoBehaviour
 {
     // Array to hold the interactable objects
     public GameObject[] interactableObjects;
+     public string sceneName = "YourSceneName"; // The name of the scene to load
+
 
     // Counter for interacted objects
     private int interactedCount = 0;
@@ -20,7 +23,8 @@ public class ObjectInteractionManager : MonoBehaviour
         if (interactedCount >= interactableObjects.Length)
         {
             // Perform the task (e.g., activate the task object)
-            Debug.Log("All objects interacted with! Task completed!");
+            SceneManager.LoadScene(sceneName);
+        
 
         }
     }

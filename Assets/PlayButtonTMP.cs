@@ -16,6 +16,7 @@ public class PlayButtonTMP : MonoBehaviour
         if (button != null)
         {
             button.onClick.AddListener(LoadScene);
+            Debug.Log("Button Set");
         }
     }
 

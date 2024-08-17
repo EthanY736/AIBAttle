@@ -728,7 +728,8 @@ MonoBehaviour:
   - {fileID: 400037087}
   - {fileID: 1029378043}
   - {fileID: 991632533}
-  sceneName: GameOver
+  EndText: {fileID: 0}
+  EndPointDoor: {fileID: 0}
 --- !u!4 &216331787
 Transform:
   m_ObjectHideFlags: 0
@@ -1821,7 +1822,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 7c4f7437006c75f47844af3438d32e83, type: 2}
+  - {fileID: 2100000, guid: 3a1dd3aec422f5244b1893e1d4cb0c7f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4555,7 +4556,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 66aa24a10d5f40e48a74da06e2a0d916, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -5695,7 +5696,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 7c4f7437006c75f47844af3438d32e83, type: 2}
+  - {fileID: 2100000, guid: 3a1dd3aec422f5244b1893e1d4cb0c7f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

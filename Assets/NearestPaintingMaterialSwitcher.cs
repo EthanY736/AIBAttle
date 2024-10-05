@@ -37,7 +37,7 @@ public class NearestPaintingMaterialSwitcher : MonoBehaviour
         }
     }
 
-    void FindNearestPainting()
+void FindNearestPainting()
     {
         // Find all objects with the tag "Painting"
         GameObject[] paintings = GameObject.FindGameObjectsWithTag(paintingTag);
@@ -48,18 +48,24 @@ public class NearestPaintingMaterialSwitcher : MonoBehaviour
         // Iterate over all found paintings to determine the closest one
         foreach (GameObject painting in paintings)
         {
-            float distance = Vector3.Distance(playerTransform.position, painting.transform.position);
-            if (distance < nearestDistance && distance <= detectionRadius)  // Check within detection radius
-            {
-                nearestDistance = distance;
-                nearestPainting = painting;
-                nearestPaintingRenderer = painting.GetComponent<Renderer>();  // Get the Renderer component
+            Painting paintingScript = painting.GetComponent<Painting>();
 
-                // Ensure the painting has a Renderer
-                if (nearestPaintingRenderer == null)
+            // Ensure the painting is not already marked as found
+            if (paintingScript != null && !paintingScript.isFound)
+            {
+                float distance = Vector3.Distance(playerTransform.position, painting.transform.position);
+                if (distance < nearestDistance && distance <= detectionRadius)  // Check within detection radius
                 {
-                    Debug.LogWarning("Nearest painting found, but it has no Renderer component.");
-                    nearestPainting = null;  // Reset if no renderer
+                    nearestDistance = distance;
+                    nearestPainting = painting;
+                    nearestPaintingRenderer = painting.GetComponent<Renderer>();  // Get the Renderer component
+
+                    // Ensure the painting has a Renderer
+                    if (nearestPaintingRenderer == null)
+                    {
+                        Debug.LogWarning("Nearest painting found, but it has no Renderer component.");
+                        nearestPainting = null;  // Reset if no renderer
+                    }
                 }
             }
         }

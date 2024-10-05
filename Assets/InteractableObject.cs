@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class InteractableObject : MonoBehaviour
 {
+    public Painting paintingScript;
     // Reference to the interaction manager
     public ObjectInteractionManager interactionManager;
 
@@ -28,6 +29,7 @@ public class InteractableObject : MonoBehaviour
             Debug.Log("Painting Found!");
             FadeTextController.instance.TriggerText();
             PaintingTracker.instance.AddPainting();
+            paintingScript.SetBoolTrue();
         }
     }
 }

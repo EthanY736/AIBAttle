@@ -20,6 +20,10 @@ public class SensitivitySlider : MonoBehaviour
 
             sensitivitySlider.onValueChanged.AddListener(OnSensitivityChanged);
         }
+        else
+        {
+            Debug.Log("Something Missing For SensitivitySlider");
+        }
     }
 
     void OnSensitivityChanged(float value)

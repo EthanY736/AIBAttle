@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 1
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 2100000, guid: 08356a2e269cb004e9a51c237090d762, type: 2}
+  m_SkyboxMaterial: {fileID: 2100000, guid: 70f9b037aec75e24fabe2cd42e82ae67, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -968,6 +968,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c31330a51887edf4e9f4c30cceee623f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  paintingScript: {fileID: 0}
   interactionManager: {fileID: 216331786}
 --- !u!114 &400037091
 MonoBehaviour:
@@ -2254,7 +2255,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 7c4f7437006c75f47844af3438d32e83, type: 2}
+  - {fileID: 2100000, guid: 466ea5fa5ac663241a2c4e6e68089efc, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3026,6 +3027,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c31330a51887edf4e9f4c30cceee623f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  paintingScript: {fileID: 0}
   interactionManager: {fileID: 216331786}
 --- !u!114 &779723572
 MonoBehaviour:
@@ -3326,6 +3328,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c31330a51887edf4e9f4c30cceee623f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  paintingScript: {fileID: 0}
   interactionManager: {fileID: 216331786}
 --- !u!114 &801740123
 MonoBehaviour:
@@ -3866,6 +3869,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c31330a51887edf4e9f4c30cceee623f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  paintingScript: {fileID: 0}
   interactionManager: {fileID: 216331786}
 --- !u!114 &991632537
 MonoBehaviour:
@@ -3969,6 +3973,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c31330a51887edf4e9f4c30cceee623f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  paintingScript: {fileID: 0}
   interactionManager: {fileID: 216331786}
 --- !u!114 &1029378047
 MonoBehaviour:
@@ -4890,7 +4895,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 7c4f7437006c75f47844af3438d32e83, type: 2}
+  - {fileID: 2100000, guid: 466ea5fa5ac663241a2c4e6e68089efc, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -5231,7 +5236,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 7c4f7437006c75f47844af3438d32e83, type: 2}
+  - {fileID: 2100000, guid: 466ea5fa5ac663241a2c4e6e68089efc, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -5973,7 +5978,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 7c4f7437006c75f47844af3438d32e83, type: 2}
+  - {fileID: 2100000, guid: 466ea5fa5ac663241a2c4e6e68089efc, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

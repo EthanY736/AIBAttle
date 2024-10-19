@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 1
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 2100000, guid: 08356a2e269cb004e9a51c237090d762, type: 2}
+  m_SkyboxMaterial: {fileID: 2100000, guid: 70f9b037aec75e24fabe2cd42e82ae67, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -683,6 +683,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c31330a51887edf4e9f4c30cceee623f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  paintingScript: {fileID: 0}
   interactionManager: {fileID: 216331786}
 --- !u!114 &400037091
 MonoBehaviour:
@@ -1981,6 +1982,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c31330a51887edf4e9f4c30cceee623f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  paintingScript: {fileID: 0}
   interactionManager: {fileID: 216331786}
 --- !u!114 &779723572
 MonoBehaviour:
@@ -2186,6 +2188,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c31330a51887edf4e9f4c30cceee623f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  paintingScript: {fileID: 0}
   interactionManager: {fileID: 216331786}
 --- !u!114 &801740123
 MonoBehaviour:
@@ -2631,6 +2634,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c31330a51887edf4e9f4c30cceee623f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  paintingScript: {fileID: 0}
   interactionManager: {fileID: 216331786}
 --- !u!114 &991632537
 MonoBehaviour:
@@ -2734,6 +2738,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c31330a51887edf4e9f4c30cceee623f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  paintingScript: {fileID: 0}
   interactionManager: {fileID: 216331786}
 --- !u!114 &1029378047
 MonoBehaviour:
@@ -2783,7 +2788,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1158982806}
   - component: {fileID: 1158982805}
-  - component: {fileID: 1158982804}
   - component: {fileID: 1158982803}
   m_Layer: 0
   m_Name: MinimapCamera
@@ -2805,14 +2809,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1227011747}
---- !u!81 &1158982804
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1158982802}
-  m_Enabled: 1
 --- !u!20 &1158982805
 Camera:
   m_ObjectHideFlags: 0

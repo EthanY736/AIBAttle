@@ -21,6 +21,9 @@ public class PathFollower : MonoBehaviour
         // Check if the GameObject is close enough to the waypoint to consider it reached
         if (direction.magnitude <= reachThreshold)
         {
+            // Rotate 90 degrees around the Y-axis
+            transform.Rotate(0, 90, 0);
+
             // Move to the next waypoint, looping if needed
             currentWaypointIndex = (currentWaypointIndex + 1) % waypoints.Length;
         }

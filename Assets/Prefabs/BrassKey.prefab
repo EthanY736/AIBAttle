@@ -91,7 +91,8 @@ GameObject:
   m_Component:
   - component: {fileID: 7667725244745034889}
   - component: {fileID: 1566498771}
-  - component: {fileID: 1566498770}
+  - component: {fileID: 3692638251874757581}
+  - component: {fileID: 4937939744152020468}
   m_Layer: 0
   m_Name: BrassKey
   m_TagString: Untagged
@@ -127,7 +128,20 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 220.59605, y: 626.57544, z: 110.029205}
   m_Center: {x: 12.350186, y: -170.40169, z: -1.9388161}
---- !u!114 &1566498770
+--- !u!65 &3692638251874757581
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6999416051668809267}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &4937939744152020468
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -136,8 +150,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 6999416051668809267}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c31330a51887edf4e9f4c30cceee623f, type: 3}
+  m_Script: {fileID: 11500000, guid: f5683a2dcf9119c4287d6bdf25f268a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  paintingScript: {fileID: 0}
-  interactionManager: {fileID: 0}
+  itemName: Key

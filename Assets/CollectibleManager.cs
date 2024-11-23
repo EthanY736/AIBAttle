@@ -21,6 +21,7 @@ public class CollectibleManager : MonoBehaviour
                     if (collectedCount == collectibleNames.Length)
                     {
                         Debug.Log("You have found all items!");
+                        ObjectInteractionManager.instance.SetDoorActive(); 
                     }
                     break;
                 }

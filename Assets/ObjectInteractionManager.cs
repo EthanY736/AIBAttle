@@ -7,6 +7,7 @@ using TMPro;
 
 public class ObjectInteractionManager : MonoBehaviour
 {
+    public static ObjectInteractionManager instance;
     // Array to hold the interactable objects
     public GameObject[] interactableObjects;
     //public string sceneName = "YourSceneName"; // The name of the scene to load
@@ -15,6 +16,10 @@ public class ObjectInteractionManager : MonoBehaviour
     public GameObject EndPointDoor;
     // Counter for interacted objects
     private int interactedCount = 0;
+    void Awake()
+    {
+        instance = this;
+    }
     void Start()
     {
         EndText.SetActive(false);
@@ -33,6 +38,10 @@ public class ObjectInteractionManager : MonoBehaviour
             EndText.SetActive(true);
             EndPointDoor.SetActive(true);
         }
+    }
+    public void SetDoorActive()
+    {
+        EndPointDoor.SetActive(true);
     }
 }
 

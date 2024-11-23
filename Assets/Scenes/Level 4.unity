@@ -3367,7 +3367,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a35b8ccfc92c63a479d1587b7eba7588, type: 2}
+  - {fileID: 2100000, guid: c6d38711520119c4e89ddf1ea6adc007, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -5528,11 +5528,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7776936433465571912, guid: 697ee1bb03ccb4c4f9c958a2c077f917, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.409
+      value: 2.4221
       objectReference: {fileID: 0}
     - target: {fileID: 7776936433465571912, guid: 697ee1bb03ccb4c4f9c958a2c077f917, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 14.259
+      value: 14.3115
       objectReference: {fileID: 0}
     - target: {fileID: 7776936433465571912, guid: 697ee1bb03ccb4c4f9c958a2c077f917, type: 3}
       propertyPath: m_LocalRotation.w
@@ -6103,7 +6103,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnPoint: {fileID: 591587334}
-  endPoint: {fileID: 917014197}
   nextSceneName: EndScreen
 --- !u!65 &917014199
 BoxCollider:
@@ -6137,7 +6136,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 76bc0615e74ed4ba39a7efb4e13ee11c, type: 2}
+  - {fileID: 2100000, guid: c921cf1f01400454e99cc8d4f2edeb08, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

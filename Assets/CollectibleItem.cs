@@ -12,6 +12,8 @@ public class CollectibleItem : MonoBehaviour
             IsCollected = true;
             Debug.Log($"{itemName} collected!");
             gameObject.SetActive(false);
+            PaintingTracker.instance.AddPainting();
+            FadeTextController.instance.TriggerText();
         }
     }
 }

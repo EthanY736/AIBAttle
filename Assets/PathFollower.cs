@@ -9,9 +9,15 @@ public class PathFollower : MonoBehaviour
     private int currentWaypointIndex = 0;
     private float initialY;             // Variable to store the starting Y position
 
+    public float initialTransformRotate = 0;
+
+    public float YTurn = 0;
+    public float ZTurn = 0;
+
+
     void Start()
     {
-        transform.Rotate(0, 0, 180);
+        transform.Rotate(0, 0, initialTransformRotate);
         initialY = transform.position.y; // Store the initial Y position
     }
 
@@ -30,7 +36,7 @@ public class PathFollower : MonoBehaviour
         if (direction.magnitude <= reachThreshold)
         {
             // Rotate 90 degrees around the Y-axis
-            transform.Rotate(0, 0, -90);
+            transform.Rotate(0, -YTurn, ZTurn);
 
             // Move to the next waypoint, looping if needed
             currentWaypointIndex = (currentWaypointIndex + 1) % waypoints.Length;

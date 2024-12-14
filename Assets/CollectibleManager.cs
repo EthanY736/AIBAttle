@@ -4,6 +4,7 @@ public class CollectibleManager : MonoBehaviour
 {
     public string[] collectibleNames = new string[5];
     private int collectedCount = 0;
+    public AudioSource audioSource;
 
     void Update()
     {
@@ -16,6 +17,7 @@ public class CollectibleManager : MonoBehaviour
                 if (item != null && !item.IsCollected)
                 {
                     item.Collect();
+                    audioSource.Play();
                     collectedCount++;
                     Debug.Log($"Collected {collectedCount}/{collectibleNames.Length} items.");
                     if (collectedCount == collectibleNames.Length)

@@ -1,4 +1,0 @@
-repository "cm2-unity1-example@tzbai765@cloud.cn"
-  path "/"
-    br "/main"
-    co "/main"

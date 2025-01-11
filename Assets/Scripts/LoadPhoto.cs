@@ -13,6 +13,12 @@ public class LoadPhoto : MonoBehaviour
         {
             OpenFileExplorer();
         }
+
+        // Add save functionality with the 'S' key
+        if (Input.GetKeyDown(KeyCode.S))
+        {
+            SaveImage();
+        }
     }
 
     private void OpenFileExplorer()
@@ -32,6 +38,32 @@ public class LoadPhoto : MonoBehaviour
         {
             // Apply texture to the canvas Image
             displayImage.sprite = Sprite.Create(texture, new Rect(0, 0, texture.width, texture.height), new Vector2(0.5f, 0.5f));
+        }
+    }
+
+    private void SaveImage()
+    {
+        // Get the current texture from the Image component
+        Texture2D texture = displayImage.sprite.texture;
+
+        if (texture != null)
+        {
+            // Encode the texture to PNG
+            byte[] bytes = texture.EncodeToPNG();
+
+            // Choose where to save the image
+            string savePath = EditorUtility.SaveFilePanel("Save Image", "", "saved_image.png", "png");
+
+            if (!string.IsNullOrEmpty(savePath))
+            {
+                // Write the bytes to the specified file path
+                File.WriteAllBytes(savePath, bytes);
+                Debug.Log("Image saved to: " + savePath);
+            }
+        }
+        else
+        {
+            Debug.LogWarning("No image loaded to save.");
         }
     }
 }

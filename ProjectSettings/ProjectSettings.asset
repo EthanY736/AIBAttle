@@ -694,10 +694,6 @@ PlayerSettings:
     m_VersionName: 
   apiCompatibilityLevel: 6
   activeInputHandler: 0
-<<<<<<< HEAD
-=======
-  windowsGamepadBackendHint: 0
->>>>>>> parent of c4c9ccf (Merge branch 'master' of https://github.com/ASlocum64/AIBAttle)
   cloudProjectId: 65eb017f-a622-4cbe-9db9-06643c106956
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []

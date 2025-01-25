@@ -2,12 +2,19 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEditor;
 using System.IO;
+<<<<<<< HEAD
 using System.Collections.Generic;
 
 public class LoadPhoto : MonoBehaviour
 {
     public List<Image> displayImages; // List of Image components on canvases
     public Transform player; // Reference to the player object
+=======
+
+public class LoadPhoto : MonoBehaviour
+{
+    public Image displayImage;
+>>>>>>> parent of c4c9ccf (Merge branch 'master' of https://github.com/ASlocum64/AIBAttle)
 
     private void Update()
     {
@@ -15,11 +22,14 @@ public class LoadPhoto : MonoBehaviour
         {
             OpenFileExplorer();
         }
+<<<<<<< HEAD
 
         if (Input.GetKeyDown(KeyCode.S))
         {
             SaveImage();
         }
+=======
+>>>>>>> parent of c4c9ccf (Merge branch 'master' of https://github.com/ASlocum64/AIBAttle)
     }
 
     private void OpenFileExplorer()
@@ -34,6 +44,7 @@ public class LoadPhoto : MonoBehaviour
     private void LoadImage(string filePath)
     {
         var bytes = File.ReadAllBytes(filePath);
+<<<<<<< HEAD
         var texture = new Texture2D(2, 2, TextureFormat.RGBA32, false);
         if (texture.LoadImage(bytes)) // Load image from bytes
         {
@@ -99,6 +110,13 @@ public class LoadPhoto : MonoBehaviour
         else
         {
             Debug.LogWarning("No image loaded to save.");
+=======
+        var texture = new Texture2D(2, 2);
+        if (texture.LoadImage(bytes)) // Load image from bytes
+        {
+            // Apply texture to the canvas Image
+            displayImage.sprite = Sprite.Create(texture, new Rect(0, 0, texture.width, texture.height), new Vector2(0.5f, 0.5f));
+>>>>>>> parent of c4c9ccf (Merge branch 'master' of https://github.com/ASlocum64/AIBAttle)
         }
     }
 }

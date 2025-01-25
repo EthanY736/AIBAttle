@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Scenes/VR.unity.meta
 guid: e47b88c23007844b1b81be5601099c18
+========
+guid: 1b8d251f9af63b746bf2f7ffe00ebb9b
+>>>>>>>> parent of c4c9ccf (Merge branch 'master' of https://github.com/ASlocum64/AIBAttle):Assets/TextMesh Pro/Documentation/TextMesh Pro User Guide 2016.pdf.meta
 DefaultImporter:
   externalObjects: {}
   userData: 

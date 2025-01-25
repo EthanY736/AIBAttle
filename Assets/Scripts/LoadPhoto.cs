@@ -2,10 +2,12 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEditor;
 using System.IO;
+using System.Collections.Generic;
 
 public class LoadPhoto : MonoBehaviour
 {
-    public Image displayImage;
+    public List<Image> displayImages; // List of Image components on canvases
+    public Transform player; // Reference to the player object
 
     private void Update()
     {
@@ -14,7 +16,6 @@ public class LoadPhoto : MonoBehaviour
             OpenFileExplorer();
         }
 
-        // Add save functionality with the 'S' key
         if (Input.GetKeyDown(KeyCode.S))
         {
             SaveImage();
@@ -45,29 +46,54 @@ public class LoadPhoto : MonoBehaviour
             readableTexture.SetPixels(texture.GetPixels());
             readableTexture.Apply();
 
-            // Apply texture to the canvas Image
-            displayImage.sprite = Sprite.Create(readableTexture, new Rect(0, 0, readableTexture.width, readableTexture.height), new Vector2(0.5f, 0.5f));
+            // Find the closest canvas to the player and update its image
+            Image closestImage = FindClosestImage();
+            if (closestImage != null)
+            {
+                closestImage.sprite = Sprite.Create(readableTexture, new Rect(0, 0, readableTexture.width, readableTexture.height), new Vector2(0.5f, 0.5f));
+            }
+            else
+            {
+                Debug.LogWarning("No canvas found near the player.");
+            }
         }
+    }
+
+    private Image FindClosestImage()
+    {
+        float closestDistance = Mathf.Infinity;
+        Image closestImage = null;
+
+        foreach (Image image in displayImages)
+        {
+            if (image == null || image.canvas.renderMode != RenderMode.WorldSpace) continue;
+
+            float distance = Vector3.Distance(player.position, image.transform.position);
+            if (distance < closestDistance)
+            {
+                closestDistance = distance;
+                closestImage = image;
+            }
+        }
+
+        return closestImage;
     }
 
     private void SaveImage()
     {
-        if (displayImage.sprite != null && displayImage.sprite.texture != null)
+        if (displayImages.Count > 0 && displayImages[0]?.sprite?.texture != null)
         {
-            // Get the current texture from the Image component
-            Texture2D texture = displayImage.sprite.texture;
+            // Save the first sprite as an example (modify to save a specific one if needed)
+            Texture2D texture = displayImages[0].sprite.texture;
 
-            // Encode the texture to PNG
             byte[] bytes = texture.EncodeToPNG();
-
-            // Choose where to save the image
             string savePath = EditorUtility.SaveFilePanelInProject("Save Image", "saved_image", "png", "Please enter a file name to save the image to");
 
             if (!string.IsNullOrEmpty(savePath))
             {
-                // Write the bytes to the specified file path
                 File.WriteAllBytes(savePath, bytes);
                 Debug.Log("Image saved to: " + savePath);
+                AssetDatabase.Refresh();
             }
         }
         else

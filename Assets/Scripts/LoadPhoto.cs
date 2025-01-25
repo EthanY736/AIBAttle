@@ -16,7 +16,7 @@ public class LoadPhoto : MonoBehaviour
             OpenFileExplorer();
         }
 
-        if (Input.GetKeyDown(KeyCode.S))
+        if (Input.GetKeyDown(KeyCode.Q))
         {
             SaveImage();
         }

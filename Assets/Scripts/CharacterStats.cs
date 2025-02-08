@@ -3,10 +3,10 @@ using UnityEngine.AI;
 
 public class CharacterStats : MonoBehaviour
 {
-    public float health = 100f;
+    public int health;
     public float attackRange = 2f;
-    public float attackDamage = 10f;
-    public float attackCooldown = 1.5f;
+    public int attackDamage;
+    public int attackCooldown;
 
     private NavMeshAgent agent;
     private CharacterStats targetEnemy;
@@ -18,7 +18,17 @@ public class CharacterStats : MonoBehaviour
     {
         agent = GetComponent<NavMeshAgent>();
         enemyRenderer = GetComponent<Renderer>();
-        originalColor = enemyRenderer.material.color;
+
+        // Assign random whole-number stats
+        health = Random.Range(50, 151); // 50 to 150
+        attackDamage = Random.Range(5, 21); // 5 to 20
+        attackCooldown = Random.Range(1, 4); // 1 to 3
+        agent.speed = Random.Range(3, 8); // 3 to 7
+
+        // Assign a random color that is not red
+        originalColor = GetRandomNonRedColor();
+        enemyRenderer.material.color = originalColor;
+
         FindNewTarget();
     }
 
@@ -84,7 +94,7 @@ public class CharacterStats : MonoBehaviour
 
     public void TakeDamage(float damage)
     {
-        health -= damage;
+        health -= (int)damage;
         FlashRed();
         if (health <= 0)
         {
@@ -106,5 +116,16 @@ public class CharacterStats : MonoBehaviour
     void Die()
     {
         Destroy(gameObject);
+    }
+
+    Color GetRandomNonRedColor()
+    {
+        Color color;
+        do
+        {
+            color = new Color(Random.value, Random.value, Random.value);
+        }
+        while (color.r > 0.7f && color.g < 0.5f && color.b < 0.5f); // Avoid strong reds
+        return color;
     }
 }

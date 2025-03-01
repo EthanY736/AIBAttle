@@ -5,38 +5,52 @@ public class CharacterStats : MonoBehaviour
 {
     public int health;
     public float attackRange = 2f;
-    public int attackDamage;
+    public int baseAttackDamage;
     public int attackCooldown;
+    public int armourValue = 0;
+    public int weaponPower = 0;
+    
+    public float detectionRange = 10f;
+    public float coneAngle = 45f;
+    public int rayCount = 10;
+    public LayerMask detectionLayer;
+    public float wanderRadius = 10f;
+    public float wanderTimer = 5f;
 
     private NavMeshAgent agent;
     private CharacterStats targetEnemy;
     private float nextAttackTime = 0f;
     private Renderer enemyRenderer;
     private Color originalColor;
+    private bool searchingForItem = false;
+    private float wanderTime;
 
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
         enemyRenderer = GetComponent<Renderer>();
 
-        // Assign random whole-number stats
-        health = Random.Range(50, 151); // 50 to 150
-        attackDamage = Random.Range(5, 21); // 5 to 20
-        attackCooldown = Random.Range(1, 4); // 1 to 3
-        agent.speed = Random.Range(3, 8); // 3 to 7
+        health = Random.Range(50, 151);
+        baseAttackDamage = Random.Range(5, 21);
+        attackCooldown = Random.Range(1, 4);
+        agent.speed = Random.Range(3, 8);
 
-        // Assign a random color that is not red
         originalColor = GetRandomNonRedColor();
         enemyRenderer.material.color = originalColor;
-
-        FindNewTarget();
+        wanderTime = wanderTimer;
     }
 
     void Update()
     {
+        if (searchingForItem) return;
+
         if (targetEnemy == null || targetEnemy.health <= 0)
         {
-            FindNewTarget();
+            DetectObjectsWithRaycast();
+            if (targetEnemy == null)
+            {
+                Wander();
+            }
         }
         else
         {
@@ -44,26 +58,55 @@ public class CharacterStats : MonoBehaviour
         }
     }
 
-    void FindNewTarget()
+    void DetectObjectsWithRaycast()
     {
-        CharacterStats[] enemies = FindObjectsOfType<CharacterStats>();
-        float closestDistance = Mathf.Infinity;
-        CharacterStats closestEnemy = null;
-
-        foreach (CharacterStats enemy in enemies)
+        float angleStep = coneAngle / (rayCount - 1);
+        float startAngle = -coneAngle / 2;
+        bool foundTarget = false;
+        
+        for (int i = 0; i < rayCount; i++)
         {
-            if (enemy != this && enemy.health > 0)
+            float angle = startAngle + (i * angleStep);
+            Vector3 direction = Quaternion.Euler(0, angle, 0) * transform.forward;
+            RaycastHit hit;
+
+            if (Physics.Raycast(transform.position, direction, out hit, detectionRange, detectionLayer))
             {
-                float distance = Vector3.Distance(transform.position, enemy.transform.position);
-                if (distance < closestDistance)
+                CharacterStats detectedEnemy = hit.collider.GetComponent<CharacterStats>();
+                if (detectedEnemy != null && detectedEnemy != this && detectedEnemy.health > 0)
                 {
-                    closestDistance = distance;
-                    closestEnemy = enemy;
+                    targetEnemy = detectedEnemy;
+                    foundTarget = true;
+                    break;
                 }
             }
+            Debug.DrawRay(transform.position, direction * detectionRange, Color.red);
         }
+        
+        if (!foundTarget)
+        {
+            targetEnemy = null;
+        }
+    }
 
-        targetEnemy = closestEnemy;
+    void Wander()
+    {
+        wanderTime -= Time.deltaTime;
+        if (wanderTime <= 0f)
+        {
+            Vector3 newPos = RandomNavSphere(transform.position, wanderRadius, -1);
+            agent.SetDestination(newPos);
+            wanderTime = wanderTimer;
+        }
+    }
+
+    static Vector3 RandomNavSphere(Vector3 origin, float dist, int layermask)
+    {
+        Vector3 randDirection = Random.insideUnitSphere * dist;
+        randDirection += origin;
+        NavMeshHit navHit;
+        NavMesh.SamplePosition(randDirection, out navHit, dist, layermask);
+        return navHit.position;
     }
 
     void ChaseAndAttackTarget()
@@ -85,16 +128,17 @@ public class CharacterStats : MonoBehaviour
 
     void AttackTarget()
     {
-        if (Time.time >= nextAttackTime && targetEnemy.health > 0)
+        if (Time.time >= nextAttackTime && targetEnemy != null && targetEnemy.health > 0)
         {
-            targetEnemy.TakeDamage(attackDamage);
+            int effectiveDamage = (int)((1 + (weaponPower / 10f)) * baseAttackDamage * (1 - (targetEnemy.armourValue / 10f)));
+            targetEnemy.TakeDamage(effectiveDamage);
             nextAttackTime = Time.time + attackCooldown;
         }
     }
 
     public void TakeDamage(float damage)
     {
-        health -= (int)damage;
+        health -= Mathf.Max(1, (int)damage - armourValue);
         FlashRed();
         if (health <= 0)
         {
@@ -125,7 +169,7 @@ public class CharacterStats : MonoBehaviour
         {
             color = new Color(Random.value, Random.value, Random.value);
         }
-        while (color.r > 0.7f && color.g < 0.5f && color.b < 0.5f); // Avoid strong reds
+        while (color.r > 0.7f && color.g < 0.5f && color.b < 0.5f);
         return color;
     }
 }

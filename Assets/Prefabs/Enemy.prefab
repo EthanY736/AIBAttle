@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: -716571220610933902}
   - component: {fileID: 4145972610048083821}
   - component: {fileID: -917276553485294215}
+  - component: {fileID: 4315424155875614423}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -127,8 +128,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 100
   attackRange: 2
-  attackDamage: 10
-  attackCooldown: 1.5
+  baseAttackDamage: 0
+  attackCooldown: 1
+  armourValue: 0
+  weaponPower: 0
+  detectionRange: 20
+  coneAngle: 45
+  rayCount: 25
+  detectionLayer:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  wanderRadius: 25
+  wanderTimer: 10
 --- !u!195 &4145972610048083821
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -178,3 +189,21 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &4315424155875614423
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4504425144635071518}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 10e188e17943c5a4bba94ca34ad81c35, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  detectionRange: 10
+  coneAngle: 45
+  rayCount: 10
+  detectionLayer:
+    serializedVersion: 2
+    m_Bits: 4294967295

@@ -13,7 +13,7 @@ public class CharacterStats : MonoBehaviour
     public float detectionRange = 10f;
     public float coneAngle = 45f;
     public int rayCount = 10;
-    public LayerMask detectionLayer;
+    public LayerMask detectionLayer; // Ensure this is set correctly in the Inspector
     public float wanderRadius = 10f;
     public float wanderTimer = 5f;
 
@@ -22,7 +22,6 @@ public class CharacterStats : MonoBehaviour
     private float nextAttackTime = 0f;
     private Renderer enemyRenderer;
     private Color originalColor;
-    private bool searchingForItem = false;
     private float wanderTime;
 
     void Start()
@@ -42,11 +41,10 @@ public class CharacterStats : MonoBehaviour
 
     void Update()
     {
-        if (searchingForItem) return;
-
         if (targetEnemy == null || targetEnemy.health <= 0)
         {
-            DetectObjectsWithRaycast();
+            targetEnemy = null;
+            DetectEnemiesWithRaycast();
             if (targetEnemy == null)
             {
                 Wander();
@@ -58,20 +56,23 @@ public class CharacterStats : MonoBehaviour
         }
     }
 
-    void DetectObjectsWithRaycast()
+    void DetectEnemiesWithRaycast()
     {
         float angleStep = coneAngle / (rayCount - 1);
         float startAngle = -coneAngle / 2;
         bool foundTarget = false;
-        
+
         for (int i = 0; i < rayCount; i++)
         {
             float angle = startAngle + (i * angleStep);
             Vector3 direction = Quaternion.Euler(0, angle, 0) * transform.forward;
             RaycastHit hit;
 
+            // Raycast with detectionLayer applied to only detect enemies
             if (Physics.Raycast(transform.position, direction, out hit, detectionRange, detectionLayer))
             {
+                Debug.DrawRay(transform.position, direction * hit.distance, Color.red);
+                Debug.Log("Hit: " + hit.collider.name); // Debugging line to show what's being hit
                 CharacterStats detectedEnemy = hit.collider.GetComponent<CharacterStats>();
                 if (detectedEnemy != null && detectedEnemy != this && detectedEnemy.health > 0)
                 {
@@ -80,9 +81,12 @@ public class CharacterStats : MonoBehaviour
                     break;
                 }
             }
-            Debug.DrawRay(transform.position, direction * detectionRange, Color.red);
+            else
+            {
+                Debug.DrawRay(transform.position, direction * detectionRange, Color.green);
+            }
         }
-        
+
         if (!foundTarget)
         {
             targetEnemy = null;
@@ -111,7 +115,11 @@ public class CharacterStats : MonoBehaviour
 
     void ChaseAndAttackTarget()
     {
-        if (targetEnemy == null) return;
+        if (targetEnemy == null || targetEnemy.health <= 0)
+        {
+            targetEnemy = null;
+            return;
+        }
 
         float distanceToTarget = Vector3.Distance(transform.position, targetEnemy.transform.position);
 
@@ -159,6 +167,7 @@ public class CharacterStats : MonoBehaviour
 
     void Die()
     {
+        targetEnemy = null;
         Destroy(gameObject);
     }
 

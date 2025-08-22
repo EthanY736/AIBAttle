@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 7868840874000180567}
   - component: {fileID: 3034198046183186523}
-  - component: {fileID: 6936999481131044164}
   - component: {fileID: 8435886149921178793}
   m_Layer: 0
   m_Name: Camera
@@ -85,14 +84,6 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
---- !u!81 &6936999481131044164
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3224812066611356061}
-  m_Enabled: 1
 --- !u!114 &8435886149921178793
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -255,10 +246,10 @@ Rigidbody:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4504425144635071518}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -297,6 +288,7 @@ MonoBehaviour:
   coneAngle: 45
   rayCount: 10
   attackRange: 2
+  HealthRegenOnKill: 0
   regenInterval: 10
   regenAmount: 5
   kills: 0

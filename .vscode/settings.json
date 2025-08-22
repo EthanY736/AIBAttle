@@ -51,5 +51,5 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "cm2-unity1-example.sln"
+    "dotnet.defaultSolution": "AIBAttle.sln"
 }

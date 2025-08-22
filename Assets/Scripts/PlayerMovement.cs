@@ -1,23 +1,29 @@
 using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody))]
 public class PlayerMovement : MonoBehaviour
 {
     public float speed = 5f;
-    public float mouseSensitivity = 500;
-    public float verticalSpeed = 5f;
+    public float mouseSensitivity = 500f;
     private float rotationY = 0f;
     private float rotationX = 0f;
 
     public Transform playerCamera;
+    private Rigidbody rb;
 
-    //void Start()
-    //{
-    //    Cursor.lockState = CursorLockMode.Locked;
-    //    Cursor.visible = false;
-    //}
+    void Start()
+    {
+        rb = GetComponent<Rigidbody>();
+        rb.freezeRotation = true; // stops physics rotation
+        rb.linearDamping = 0f;             // we’ll control stopping manually
+
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+    }
 
     void Update()
     {
+        // --- Mouse Look ---
         float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime;
         rotationY += mouseX;
 
@@ -26,26 +32,21 @@ public class PlayerMovement : MonoBehaviour
         rotationX = Mathf.Clamp(rotationX, -90f, 90f);
 
         transform.rotation = Quaternion.Euler(0f, rotationY, 0f);
-
         playerCamera.localRotation = Quaternion.Euler(rotationX, 0f, 0f);
-
-        float horizontal = Input.GetAxis("Horizontal");
-        float vertical = Input.GetAxis("Vertical");
-
-        float upDown = 0f;
-        if (Input.GetKey(KeyCode.E))
-        {
-            upDown = 1f;
-        }
-        else if (Input.GetKey(KeyCode.Q))
-        {
-            upDown = -1f;
-        }
-
-        Vector3 movement = transform.right * horizontal + transform.forward * vertical;
-
-        movement += transform.up * upDown;
-
-        transform.Translate(movement * speed * Time.deltaTime, Space.World);
     }
+
+    void FixedUpdate()
+{
+    float horizontal = Input.GetAxisRaw("Horizontal");
+    float vertical = Input.GetAxisRaw("Vertical");
+
+    Vector3 moveDir = (transform.right * horizontal + transform.forward * vertical).normalized;
+
+    // keep gravity (y velocity) while overwriting x/z
+    Vector3 targetVelocity = moveDir * speed;
+    targetVelocity.y = rb.linearVelocity.y;
+
+    rb.linearVelocity = targetVelocity;
+}
+
 }

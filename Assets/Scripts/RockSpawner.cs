@@ -3,10 +3,14 @@ using UnityEngine;
 public class RockSpawner : MonoBehaviour
 {
     public GameObject[] enemyPrefabs; // Array of enemy prefabs to spawn
-    public Material[] Materials; // Array of random materials/textures
-    public int numberOfEnemies = 5; // Number of enemies to spawn
-    public float spawnRadius = 10f; // Random range for X and Z spawn positions
+    public Material[] Materials;      // Array of random materials/textures
+    public int numberOfEnemies = 5;   // Number of enemies to spawn
+    public float spawnRadius = 10f;   // Random range for X and Z spawn positions
     public float SpawnHeight = 0;
+
+    [Header("Randomization Options")]
+    public bool useRandomRotation = true;
+    public bool useRandomScale = true;
 
     void Start()
     {
@@ -29,6 +33,20 @@ public class RockSpawner : MonoBehaviour
 
             // Spawn the enemy
             GameObject spawnedEnemy = Instantiate(enemyPrefab, randomPosition, Quaternion.identity);
+
+            // Apply random Y rotation
+            if (useRandomRotation)
+            {
+                float randomY = Random.Range(0f, 360f);
+                spawnedEnemy.transform.rotation = Quaternion.Euler(0f, randomY, 0f);
+            }
+
+            // Apply random uniform scale
+            if (useRandomScale)
+            {
+                float randomScale = Random.Range(1f, 2f);
+                spawnedEnemy.transform.localScale = Vector3.one * randomScale;
+            }
 
             // Apply a random material if available
             if (Materials.Length > 0)

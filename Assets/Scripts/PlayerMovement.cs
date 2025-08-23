@@ -17,8 +17,8 @@ public class PlayerMovement : MonoBehaviour
         rb.freezeRotation = true; // stops physics rotation
         rb.linearDamping = 0f;             // we’ll control stopping manually
 
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
+       // Cursor.lockState = CursorLockMode.Locked;
+       // Cursor.visible = false;
     }
 
     void Update()

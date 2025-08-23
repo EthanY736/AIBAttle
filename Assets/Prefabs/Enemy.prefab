@@ -108,7 +108,6 @@ GameObject:
   - component: {fileID: 8781461433133746412}
   - component: {fileID: 7066176648160214681}
   - component: {fileID: 2363593928748592506}
-  - component: {fileID: -716571220610933902}
   - component: {fileID: -917276553485294215}
   - component: {fileID: 482646599708609838}
   - component: {fileID: -3631646324485563437}
@@ -213,32 +212,6 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &-716571220610933902
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4504425144635071518}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d73f809fac9be454680f451ae46258c0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: 100
-  attackRange: 2
-  baseAttackDamage: 0
-  attackCooldown: 1
-  armourValue: 0
-  weaponPower: 0
-  detectionRange: 20
-  coneAngle: 45
-  rayCount: 15
-  detectionLayer:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  wanderRadius: 25
-  wanderTimer: 2
 --- !u!54 &-917276553485294215
 Rigidbody:
   m_ObjectHideFlags: 0

@@ -15,14 +15,15 @@ public class PlayerMovement : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true; // stops physics rotation
-        rb.linearDamping = 0f;             // we’ll control stopping manually
-
-       // Cursor.lockState = CursorLockMode.Locked;
-       // Cursor.visible = false;
+        rb.linearDamping = 0f;    // we’ll control stopping manually
     }
 
     void Update()
     {
+        // --- Ignore input if an enemy is being controlled ---
+        if (EnemyClickTracker.ActiveControlledEnemy != null)
+            return;
+
         // --- Mouse Look ---
         float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime;
         rotationY += mouseX;
@@ -36,17 +37,20 @@ public class PlayerMovement : MonoBehaviour
     }
 
     void FixedUpdate()
-{
-    float horizontal = Input.GetAxisRaw("Horizontal");
-    float vertical = Input.GetAxisRaw("Vertical");
+    {
+        // --- Ignore movement input if an enemy is being controlled ---
+        if (EnemyClickTracker.ActiveControlledEnemy != null)
+            return;
 
-    Vector3 moveDir = (transform.right * horizontal + transform.forward * vertical).normalized;
+        float horizontal = Input.GetAxisRaw("Horizontal");
+        float vertical = Input.GetAxisRaw("Vertical");
 
-    // keep gravity (y velocity) while overwriting x/z
-    Vector3 targetVelocity = moveDir * speed;
-    targetVelocity.y = rb.linearVelocity.y;
+        Vector3 moveDir = (transform.right * horizontal + transform.forward * vertical).normalized;
 
-    rb.linearVelocity = targetVelocity;
-}
+        // keep gravity (y velocity) while overwriting x/z
+        Vector3 targetVelocity = moveDir * speed;
+        targetVelocity.y = rb.linearVelocity.y;
 
+        rb.linearVelocity = targetVelocity;
+    }
 }

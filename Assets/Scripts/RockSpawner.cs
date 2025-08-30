@@ -12,6 +12,9 @@ public class RockSpawner : MonoBehaviour
     public bool useRandomRotation = true;
     public bool useRandomScale = true;
 
+    public float minScale = 1;
+    public float maxScale = 2;
+
     void Start()
     {
         SpawnEnemies();
@@ -44,7 +47,7 @@ public class RockSpawner : MonoBehaviour
             // Apply random uniform scale
             if (useRandomScale)
             {
-                float randomScale = Random.Range(1f, 2f);
+                float randomScale = Random.Range(minScale, maxScale);
                 spawnedEnemy.transform.localScale = Vector3.one * randomScale;
             }
 

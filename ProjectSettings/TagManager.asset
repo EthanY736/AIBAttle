@@ -9,6 +9,7 @@ TagManager:
   - Weapon
   - Zone
   - Leaderboard
+  - ExitPoint
   layers:
   - Default
   - TransparentFX

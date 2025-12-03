@@ -516,7 +516,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: 0, y: -100}
-  m_SizeDelta: {x: 600, y: 100}
+  m_SizeDelta: {x: 550, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &968132657
 MonoBehaviour:
@@ -538,7 +538,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: ab020f9a8a22c3445a688ab7f975c0bf, type: 3}
+  m_Sprite: {fileID: 21300000, guid: c66303760acba6f40ae60d60d288fb72, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1349,7 +1349,7 @@ MonoBehaviour:
   enemyPrefabs:
   - {fileID: 1850146209860867352, guid: f6c752c13a72c194d9b398e1584730d4, type: 3}
   numberOfEnemies: 10
-  spawnRadius: 100
+  spawnRadius: 300
   SpawnHeight: 5
 --- !u!4 &2038627027
 Transform:
@@ -1398,7 +1398,7 @@ MonoBehaviour:
   enemyPrefabs:
   - {fileID: 5679094030176688618, guid: 1131009c616b6e842987b398a953d12c, type: 3}
   numberOfEnemies: 10
-  spawnRadius: 100
+  spawnRadius: 300
   SpawnHeight: 5
 --- !u!114 &2038627030
 MonoBehaviour:
